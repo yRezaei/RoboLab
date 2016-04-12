@@ -1,0 +1,62 @@
+<problem_description name="name_of_scenario" numberOfSamples="100000">
+	<objects_list>
+        <object tag="target_object" name="object_name1"> </object>
+		<object tag="surface_object" name="object_name2"> </object>
+        <object tag="surrounding_objects" name="object_name3"> </object>
+        <object tag="surrounding_objects" name="object_name4"> </object>
+        <object tag="surrounding_objects" name="object_name5"> </object>
+        <object tag="surrounding_objects" name="object_name6"> </object>
+        <object tag="surrounding_objects" name="object_name7"> </object>
+	</objects_list>
+    
+	<action name="release">
+		<initial_state>
+             <predicate type="spatial_proposition" name="above_of" validity="true">
+                <active object="object_name3"> </active>
+                <passive tag="surrounding_objects"> </passive>
+            </predicate>
+            <predicate type="spatial_distance" name="in_touch" validity="true">
+                <argument value="z"> </argument>
+                <active object="object_name3"> </active>
+                <passive multiple_object="object_name1,object_name2,object_name5,object_name4"> </passive>
+            </predicate>
+            <predicate type="spatial_proposition" name="above_of" validity="true">
+                <active object="object_name2"> </active>
+                <passive object="object_name1"> </passive>
+            </predicate>
+            <predicate type="spatial_topology" name="nttp" validity="true">
+                <argument plane="xy"> </argument>
+                <active object="object_name2"> </active>
+                <passive object="object_name1"> </passive>
+            </predicate>
+            <predicate type="spatial_distance" name="very_close" validity="true">
+                <argument axis="z"> </argument>
+                <active object="object_name2"> </active>
+                <passive object="object_name1"> </passive>
+            </predicate>
+            <predicate type="spatial_orientation" name="arbitrary" validity="true">
+                <active object="object_name2"> </active>
+            </predicate>
+        </initial_state>
+        
+		<goal_state>
+            <predicate type="spatial_proposition" name="above_of" validity="true">
+                <active object="object_name2"> </active>
+                <passive object="object_name1"> </passive>
+            </predicate>
+            <predicate type="spatial_orientation" name="stand_up" validity="true">
+                <active object="object_name2"> </active>
+            </predicate>
+            <predicate type="spatial_distance" name="arbitrary" validity="true">
+                <argument axis="z"> </argument>
+                <active object="object_name2"> </active>
+                <passive object="object_name1"> </passive>
+            </predicate>
+            <predicate type="spatial_topology" name="dc" validity="true">
+                <argument plane="xy"> </argument>
+                <active object="object_name2"> </active>
+                <passive object="object_name3"> </passive>
+            </predicate>
+        </goal_state>
+	</action>
+</problem_description>
