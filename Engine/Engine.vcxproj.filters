@@ -245,12 +245,16 @@
     <ClCompile Include="src\entity\component\meshComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PhysX3_x64.dll" />
     <None Include="PhysX3Common_x64.dll" />
     <None Include="PhysX3Cooking_x64.dll" />
     <None Include="SDL2.dll" />
+    <None Include="glew32.dll" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="table_round.txt" />

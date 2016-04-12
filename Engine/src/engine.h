@@ -18,5 +18,16 @@ using namespace system;
 using namespace manager;
 using namespace blueprint;
 
+namespace robolab {
+	class Engine {
+	private:
+		bool initialize();
+	public:
+		Engine(const std::string& pathToSettingFile);
+		~Engine();
+		bool loadResource(const std::string& fileName);
+	};
+}
+
 
 #endif

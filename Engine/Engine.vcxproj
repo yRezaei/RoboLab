@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\entity\component\meshComponent.cpp" />
     <ClCompile Include="src\entity\component\physicComponent.cpp" />
     <ClCompile Include="src\entity\component\renderableComponent.cpp" />
@@ -202,6 +203,7 @@
     <ClCompile Include="test\symbolicNumeric\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="glew32.dll" />
     <None Include="PhysX3Common_x64.dll" />
     <None Include="PhysX3Cooking_x64.dll" />
     <None Include="PhysX3_x64.dll" />
