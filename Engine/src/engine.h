@@ -26,6 +26,7 @@ namespace robolab {
 		Engine(const std::string& pathToSettingFile);
 		~Engine();
 		bool loadResource(const std::string& fileName);
+		void loadMeshFile(const std::string& directory, const std::string& meshName);
 	};
 }
 
