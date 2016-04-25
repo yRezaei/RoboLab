@@ -123,6 +123,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\entity\component\meshComponent.h" />
+    <ClInclude Include="src\graphics\bounds.h" />
+    <ClInclude Include="src\graphics\mesh.h" />
+    <ClInclude Include="src\graphics\shape.h" />
+    <ClInclude Include="src\utils\utility.h" />
     <ClInclude Include="test\bp_main_simpleRandom.h" />
     <ClInclude Include="test\bp_simpleRandomInstance.h" />
     <ClInclude Include="test\bp_symbolicNumericConversion.h" />
@@ -183,6 +187,7 @@
     <ClCompile Include="src\graphics\camera\camera.cpp" />
     <ClCompile Include="src\graphics\geometry.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
+    <ClCompile Include="src\graphics\mesh.cpp" />
     <ClCompile Include="src\gui\window.cpp" />
     <ClCompile Include="src\managers\physicsMgr.cpp" />
     <ClCompile Include="src\managers\renderMgr.cpp" />
@@ -192,6 +197,7 @@
     <ClCompile Include="src\utils\fileIO.cpp" />
     <ClCompile Include="src\utils\fileOBJ.cpp" />
     <ClCompile Include="src\utils\timer.cpp" />
+    <ClCompile Include="src\utils\utility.cpp" />
     <ClCompile Include="src\wrapper\customAllocatorCallback.cpp" />
     <ClCompile Include="src\wrapper\customErrorCallback.cpp" />
     <ClCompile Include="src\wrapper\customEventCallback.cpp" />

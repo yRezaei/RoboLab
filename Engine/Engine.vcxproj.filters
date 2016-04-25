@@ -54,9 +54,6 @@
     <ClInclude Include="src\graphics\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gui\window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\managers\physicsMgr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -159,6 +156,21 @@
     <ClInclude Include="src\entity\component\meshComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\bounds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -246,6 +258,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

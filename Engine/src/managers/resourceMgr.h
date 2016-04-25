@@ -6,10 +6,12 @@
 #include <memory>
 #include <unordered_map>
 #include "../commen/dataTypes.h"
-#include "../graphics/mesh3D.h"
+#include "../graphics/visualMesh.h"
+#include "../graphics/physicalMesh.h"
 
 namespace robolab {
 	using namespace graphics;
+
 	namespace manager {
 
 		namespace internal
@@ -23,11 +25,11 @@ namespace robolab {
 
 		class ResourceMgr {
 		public:
-			using BitwiseMeshUsageType = int;
-			enum MeshUsageType {
-				MESH_RENDERING = 1,
-				MESH_PHYSIC_SIMULATION = 2
+			enum class MeshUsageType {
+				VISUALIZATION,
+				PHYSIC_SIMULATION
 			};
+			
 		private:
 			enum FileExtention {
 				FILE_OBJ,
@@ -35,18 +37,18 @@ namespace robolab {
 			};
 			static bool isInitialized;
 		private:
+			static std::vector<std::shared_ptr<Mesh>> emptyPhysicalMesh;
 			static std::unordered_map<std::string, FileExtention> filesExtentionList;
-			static std::unordered_map<std::string, std::shared_ptr<MeshDataBuffers>> renderMeshData;
-			static std::unordered_map<std::string, std::vector<std::shared_ptr<MeshDataBuffers>>> physicMeshData;
-			static std::shared_ptr<MeshDataBuffers> loadMesh(const Path& path, Vec3f& scaleFactor);
+			static std::unordered_map<std::string, std::shared_ptr<Mesh>> visualMeshList;
+			static std::unordered_map<std::string, std::vector<std::shared_ptr<Mesh>>> physicalMeshList;
+			
 		public:
 			static bool initialize();
-			static void loadMeshFile(const std::string& directory, const std::string& meshName, BitwiseMeshUsageType usageType, Vec3f& scaleFactor = Vec3f(1.0f));
-			static bool hasRenderMesh(const std::string& meshName);
-			static bool existPhysicMesh(const std::string& meshName);
-			static const std::shared_ptr<MeshDataBuffers> getRenderMesh(const std::string& meshName);
-			static const std::vector<std::shared_ptr<MeshDataBuffers>> getPhysicMesh(const std::string& meshName);
-			static std::shared_ptr<MeshDataBuffers> createCube(const std::string& meshName, float lenght, float width, float height, Vec3f& pivot);
+			static std::shared_ptr<Mesh> loadMesh(const Path& path, Vec3f& scaleFactor);
+			static void loadMeshFile(MeshUsageType type, const std::string& directory, const std::string& baseName, Vec3f& scaleFactor = Vec3f(1.0f));
+			static const std::shared_ptr<Mesh> getVisualMesh(const std::string& meshName);
+			static const std::vector<std::shared_ptr<Mesh>>& getPhysicalMesh(const std::string& meshName);
+			static std::shared_ptr<Mesh> createCube(const std::string& meshName, float lenght, float width, float height, Vec3f& pivot);
 			static void shutdown();
 		};
 

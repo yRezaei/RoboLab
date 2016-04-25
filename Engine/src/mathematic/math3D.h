@@ -16,6 +16,8 @@ namespace robolab {
 #define Rad2Deg(angle) (angle * (180.0f / 3.141592653589793f))
 #define Deg2Rad(angle) (angle * (3.141592653589793f / 180.0f))
 
+		using Vec3uc = glm::u8vec3;
+
 		using Vec2i = glm::ivec2;
 		using Vec3i = glm::ivec3;
 		using Vec4i = glm::ivec4;

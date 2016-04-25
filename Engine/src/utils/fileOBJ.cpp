@@ -218,6 +218,59 @@ namespace robolab {
 
 					return meshBuffer;
 				}
+
+				std::shared_ptr<Mesh> load(const Path& filePath, Vec3f& preScale, BitwiseDataFlag flags)
+				{
+					std::shared_ptr<Mesh> mesh;
+					std::ifstream objFile;
+					std::unordered_map<std::string, Vec3f> colorData;
+					std::string line;
+					Vec3f activeColor(0.5f, 0.5f, 0.5f);
+
+					objFile.open(filePath.toString().c_str());
+					if (objFile.is_open())
+					{
+						while (objFile.good())
+						{
+							getline(objFile, line);
+
+							StringTokenizer objLineTokens(line, "/\\, ", StringTokenizer::TOK_TRIM | StringTokenizer::TOK_IGNORE_EMPTY);
+							if (objLineTokens.count() == 0)
+								continue;
+							switch (getLineType(objLineTokens[0]))
+							{
+							case OBJ_VERTEX:
+							{
+								mesh->addVertex( Vec3f( (float)NumberParser::parseFloat(objLineTokens[1]) * preScale.x,
+									(float)NumberParser::parseFloat(objLineTokens[2]) * preScale.y,
+									(float)NumberParser::parseFloat(objLineTokens[3]) * preScale.z) );
+							}
+							break;
+
+							case OBJ_FACE:
+							{
+								std::array<unsigned int, 3> verticesIndex{ NumberParser::parseUnsigned(objLineTokens[1]) - 1,
+									NumberParser::parseUnsigned(objLineTokens[4]) - 1,
+									NumberParser::parseUnsigned(objLineTokens[7]) - 1 };
+								mesh->addTriangles(verticesIndex, activeColor);
+							}
+							break;
+
+							case OBJ_MATERIAL_FILE:
+								readMtlData(filePath.toString().substr(0, filePath.toString().length() - 4), colorData);
+								break;
+
+							case OBJ_USE_MATERIAL:
+								activeColor = colorData[objLineTokens[1]];
+								break;
+							}
+						}
+					}
+					if (objFile.is_open())
+						objFile.close();
+
+					return mesh;
+				}
 			}
 		}
 	}

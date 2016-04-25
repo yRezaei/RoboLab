@@ -10,6 +10,7 @@
 #include "../commen/dataTypes.h"
 #include "../mathematic/math3D.h"
 #include "../graphics/mesh3D.h"
+#include "../graphics/mesh.h"
 
 namespace robolab {
 	using namespace math3D;
@@ -23,8 +24,6 @@ namespace robolab {
 		*********************************************/
 		namespace fileIO
 		{
-			std::vector<Path> getAllFileInDirectory(const Path& directory, const std::string& nameFilter = "any", const std::string& extFilter = "any");
-
 			/********************************************
 			*		      namespace obj
 			*********************************************/
@@ -45,6 +44,7 @@ namespace robolab {
 				};
 
 				std::shared_ptr<MeshDataBuffers> load(const Path& filePath, std::shared_ptr<MeshDataBuffers> meshBuffer, Vec3f& preScale = Vec3f(1.0f), BitwiseDataFlag flags = 0);
+				std::shared_ptr<Mesh> load(const Path& filePath, Vec3f& preScale = Vec3f(1.0f), BitwiseDataFlag flags = 0);
 
 				LineDataType getLineType(const std::string& line);
 				void readMaterialProperties(const std::string& colroName, std::unordered_map<std::string, Vec3f>& colorMap, std::ifstream& file);
