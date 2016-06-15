@@ -43,23 +43,12 @@ namespace robolab {
 					OBJ_DIFFUSE_COLOR, OBJ_SPECULAR_COLOR, OBJ_TRANSPARENT_VALUE, OBJ_ILLUMINATION_VALUE, OBJ_NONE
 				};
 
-				std::shared_ptr<MeshDataBuffers> load(const Path& filePath, std::shared_ptr<MeshDataBuffers> meshBuffer, Vec3f& preScale = Vec3f(1.0f), BitwiseDataFlag flags = 0);
-				std::shared_ptr<Mesh> load(const Path& filePath, Vec3f& preScale = Vec3f(1.0f), BitwiseDataFlag flags = 0);
+				std::shared_ptr<Mesh> load(const Path& filePath, Vec3f& preScale = Vec3f(1.0f));
 
 				LineDataType getLineType(const std::string& line);
 				void readMaterialProperties(const std::string& colroName, std::unordered_map<std::string, Vec3f>& colorMap, std::ifstream& file);
 				void readMtlData(const std::string& mtlFileName, std::unordered_map<std::string, Vec3f>& colorMap);
 			}// end of namespace obj
-
-
-				/********************************************
-				*		      namespace scf
-				*********************************************/
-			namespace scf // Scenario Configuration File
-			{
-				//void load(const std::string& fileName, ScenearioInfo& scenarioInfo);
-			}
-
 
 		}// end of namespace FileIO
 

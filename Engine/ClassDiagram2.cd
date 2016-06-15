@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="robolab::Engine" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAABAAAAAAEAAA=</HashCode>
+      <FileName>src\engine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::Entity" Collapsed="true">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAIIAgAAAAAkCECAAAAAACCCAEAABABAAECAAIAgA=</HashCode>
+      <FileName>src\entity\component\icomponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::RigidObject" Collapsed="true">
+    <Position X="4" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACAACAA=</HashCode>
+      <FileName>src\entity\rigidObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::component::IComponent" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAQAAAAAEAAAAAAAAIAQAAAAAAEAAA=</HashCode>
+      <FileName>src\entity\component\icomponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::component::TransformComponent" Collapsed="true">
+    <Position X="2.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIKAAAFAAAEAAAAAAAAACCAAEBAIABAAAAAAAACA=</HashCode>
+      <FileName>src\entity\component\physicComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::component::PhysicComponent" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAQAAAAAAAEBAUCiAAgACCACQAQpABAAEgIAoEAA=</HashCode>
+      <FileName>src\entity\component\physicComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::component::RenderableComponent" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgABGgAAAAAAAgAAIBAAAAAAABAAA=</HashCode>
+      <FileName>src\entity\component\renderableComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::entity::component::MeshComponent" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAQAAAAAAAAACAAgAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>src\entity\component\meshComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::graphics::Mesh" Collapsed="true">
+    <Position X="18" Y="7.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAEBCACAAAAAAQAAJAGAACAAgQACgAAAAgA=</HashCode>
+      <FileName>src\graphics\mesh.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::graphics::Shape" Collapsed="true">
+    <Position X="15.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggCEAIAAAAAAAAKAEAAAAAABAAAEAAAAAAQGAAAAAgA=</HashCode>
+      <FileName>src\graphics\shape.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::graphics::Camera" Collapsed="true">
+    <Position X="11.5" Y="4" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AhICIAAIgBAAgAQAZACBIRCIAAAAgAQaAjCgAAiQJAA=</HashCode>
+      <FileName>src\graphics\camera\camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::graphics::Shader" Collapsed="true">
+    <Position X="13.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAACABAGIAAAAAABCAAAAAAIAAAAQAAAEAAAAAAAA=</HashCode>
+      <FileName>src\graphics\shader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::gui::Window" Collapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>SAAAAAAAQIAABFAhAIEAAAAoAQAARgAIAAAASAAEEAA=</HashCode>
+      <FileName>src\gui\window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::manager::PhysicsMgr" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.25" />
+    <NestedTypes>
+      <Struct Name="robolab::manager::PhysicsMgr::PhysicScene" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\managers\physicsMgr.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAIABAAAAgAAABAAEAAIBAAAACAQAECAAABAAGQgA=</HashCode>
+      <FileName>src\managers\physicsMgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::manager::RenderMgr" Collapsed="true">
+    <Position X="7.25" Y="4.25" Width="1.25" />
+    <NestedTypes>
+      <Struct Name="robolab::manager::RenderMgr::RenderableData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\managers\renderMgr.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="robolab::manager::RenderMgr::DrawableInstace" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\managers\renderMgr.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAwACAmAAAAABEDMEAgAMAAAAoBQMMAAAAIAFgAA=</HashCode>
+      <FileName>src\managers\renderMgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::manager::Resource" Collapsed="true">
+    <Position X="5.75" Y="4.25" Width="1.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="robolab::manager::Resource::MeshUsageType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\managers\resource.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="robolab::manager::Resource::FileExtention" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\managers\resource.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABABCAEAAAAggAABAAEAAAACAAABAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>src\managers\resource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::system::Input" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAABIAABAAAAAAAAAAYQEKIAAAAAAIYAAABBQAIA=</HashCode>
+      <FileName>src\system\input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::system::Logging" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAgAAAAAAgAAABAAAgAAAbAAAAAAAAAxQAAgA=</HashCode>
+      <FileName>src\system\logging.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::utils::Timer" Collapsed="true">
+    <Position X="15.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAoAABAAEAAAAAAAAgAAAAADAAAAGAAAAAAAAUAAA=</HashCode>
+      <FileName>src\utils\timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::wrapper::CustomEventCallback" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAEAAAIAAAAAAIAAAAACABAAAAAAAIAAAA=</HashCode>
+      <FileName>src\entity\component\physicComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::wrapper::CustomAllocatorCallback" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\wrapper\customAllocatorCallback.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::wrapper::CustomErrorCallback" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>src\wrapper\customErrorCallback.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="robolab::blueprint::IBlueprint" Collapsed="true">
+    <Position X="2.5" Y="4.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAIQAAAAAAAEAAA=</HashCode>
+      <FileName>src\blueprint\IBlueprint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="robolab::entity::Hit" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAICAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\entity\entity.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::entity::CollisionInfo" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>src\entity\rigidObject.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::graphics::Bounds" Collapsed="true">
+    <Position X="17.75" Y="4.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>EIgAEAAQCAAQCAAAQIAAAAAAAAAAAAAAQABgAAAAAgA=</HashCode>
+      <FileName>src\graphics\bounds.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::graphics::GLBufferIDs" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAACAAAAAEQAACAAAAAAAEBCAAAAAAAA=</HashCode>
+      <FileName>src\graphics\mesh3D.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::graphics::GLShaderIDs" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAACAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>src\graphics\mesh3D.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::graphics::RenderableObject" Collapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAAABAAA=</HashCode>
+      <FileName>src\graphics\mesh3D.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::graphics::PhysicalProperty" Collapsed="true">
+    <Position X="17.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAQAAAAAEAEAAEAQEAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\graphics\mesh3D.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::system::InputEvent" Collapsed="true">
+    <Position X="16" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgEAAAAAAEAQAAACAAAAAAAgAAAAAAAAAEAAAA=</HashCode>
+      <FileName>src\system\input.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::utils::UniformRandomFloat" Collapsed="true">
+    <Position X="16" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAACAAAYiAAA=</HashCode>
+      <FileName>src\utils\random.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::utils::UniformRandomInt" Collapsed="true">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAACIAAYAAAA=</HashCode>
+      <FileName>src\utils\random.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="robolab::math3D::EulerAngles" Collapsed="true">
+    <Position X="15.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAQAAAAAAAAAAAgAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\mathematic\math3D.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="robolab::MeasurementUnit" Collapsed="true">
+    <Position X="15.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAACAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>src\managers\physicsMgr.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::entity::component::PhysicFlag" Collapsed="true">
+    <Position X="13.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>src\entity\component\physicComponent.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::graphics::CameraType" Collapsed="true">
+    <Position X="13.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\graphics\camera\camera.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::manager::VisibilityOption" Collapsed="true">
+    <Position X="15.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAgA=</HashCode>
+      <FileName>src\managers\renderMgr.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::system::KeyEventType" Collapsed="true">
+    <Position X="15.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>5jEeqnvrix6mTMtURO7PS22M/c3/wHwh2W2d2Ynd+jU=</HashCode>
+      <FileName>src\system\input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::system::MouseEventType" Collapsed="true">
+    <Position X="15.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAA=</HashCode>
+      <FileName>src\system\input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::system::LoggerEvent" Collapsed="true">
+    <Position X="13.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAE=</HashCode>
+      <FileName>src\system\logging.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::utils::fileIO::obj::FlagTypes" Collapsed="true">
+    <Position X="15.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>src\utils\fileIO.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::utils::fileIO::obj::LineDataType" Collapsed="true">
+    <Position X="13.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAABAAAEBAAAEgCAAAAACCICAAAAACAAAIAAAgA=</HashCode>
+      <FileName>src\utils\fileIO.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::wrapper::opengl::BufferType" Collapsed="true">
+    <Position X="15.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAEAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>src\wrapper\openGLWrapper.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::wrapper::opengl::DrawPrimitiveTYPE" Collapsed="true">
+    <Position X="13.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>src\wrapper\openGLWrapper.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="robolab::wrapper::opengl::PolygonPrimitiveTYPE" Collapsed="true">
+    <Position X="13.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAIAAA=</HashCode>
+      <FileName>src\wrapper\openGLWrapper.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

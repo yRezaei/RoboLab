@@ -1,0 +1,14 @@
+<faultScenarioDescription name="nameOfScenario" numberOfSamples="100000">
+	<objectList>
+		<object path="address" name="objectName1" type="active"> </object>
+		<object path="address" name="objectName2" type="active"> </object>
+		<object path="address" name="objectName3" type="active"> </object>
+		<object path="address" name="objectName4" type="passive"> </object>
+	</objectList>
+	<action type="release" figureObject="onlyFromActiveObjects" groundObject="oneOfTheActiveOrPassiveObjects"> 
+		<states minDistanceToEdge="2" minDistanceToPassive="3" maxHeight="2.5">
+			<initial connectedness="over" orientation="arbitrary"> </initial>
+			<goal connectedness="on" orientation="along-z"> </goal>
+		</states>
+	</action>
+</faultScenarioDescription>

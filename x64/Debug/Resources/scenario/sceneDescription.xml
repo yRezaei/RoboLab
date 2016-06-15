@@ -1,0 +1,22 @@
+<scene_description>
+	<mesh3D_List>
+		<mesh3D name="mesh_name" path="path_to_mesh"> </mesh3D>
+		<mesh3D name="mesh_name" path="path_to_mesh"> </mesh3D>
+		<mesh3D name="mesh_name" path="path_to_mesh"> </mesh3D>
+	</mesh3D_List>
+    
+    <scene_objects name="name_of_scenario">
+        <object name="object_name" mesh3D="mesh_name" type="static">
+            <position x="0.0" y="0.0" z="0.0"> </position>
+            <euler_angles roll="0.0" pitch="0.0" yaw="0.0"> </euler_angles>
+        </object>
+         <object name="object_name" mesh3D="mesh_name" type="dynamic">
+            <position x="0.0" y="0.0" z="0.0"> </position>
+            <euler_angles roll="0.0" pitch="0.0" yaw="0.0"> </euler_angles>
+        </object>
+         <object name="object_name" mesh3D="mesh_name" type="dynamic">
+            <position x="0.0" y="0.0" z="0.0"> </position>
+            <euler_angles roll="0.0" pitch="0.0" yaw="0.0"> </euler_angles>
+        </object>
+    </scene_objects>
+</scene_description>

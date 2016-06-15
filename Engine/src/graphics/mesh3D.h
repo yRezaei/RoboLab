@@ -6,57 +6,23 @@
 #include <vector>
 #include <memory>
 #include <unordered_map>
-#include "../mathematic/math3D.h"
-#include "bounds.h"
 
 
 namespace robolab {
-	using namespace math3D;
 
 	namespace graphics {
-
-		using uint = unsigned int;
-
-		struct MeshDataBuffers {
-		private:
-			std::size_t uniqueID; 
-			std::string meshName;
-		public:
-			Indices rowIndices;
-			Vertices rowVertices;
-			Vertices vertices;
-			Normals normals;
-			Colors colors;
-			Indices indices;
-			Bounds bounds;
-			MeshDataBuffers(std::size_t UniqueID, const std::string& MeshName) 
-				: uniqueID(UniqueID), meshName(MeshName) {}
-			bool operator == (const MeshDataBuffers& meshDataBuffers)
-			{
-				if (uniqueID == meshDataBuffers.uniqueID)
-					return true;
-				else
-					return false;
-			}
-			const std::size_t& getID() {
-				return uniqueID;
-			}
-			const std::string& getName() {
-				return meshName;
-			}
-		};
 
 		struct GLBufferIDs {
 		private:
 			std::size_t uniqueID;
 			std::string meshName;
 		public:
-			uint VAO;
+			unsigned int VAO;
 			std::unordered_map<std::string, unsigned int> attributesID;
-			uint indexID;
+			unsigned int indexID;
 			std::size_t indexSize;
-			GLBufferIDs(std::size_t UniqueID, std::string MeshName, uint vao, uint index, std::size_t IndexSize, std::unordered_map<std::string, unsigned int>& AttributesID)
-				: uniqueID(UniqueID), meshName(MeshName), VAO(vao), indexID(index), indexSize(IndexSize), attributesID(AttributesID) {}
+			GLBufferIDs(std::size_t UniqueID, unsigned int vao, unsigned int index, std::size_t IndexSize, std::unordered_map<std::string, unsigned int>& AttributesID)
+				: uniqueID(UniqueID), VAO(vao), indexID(index), indexSize(IndexSize), attributesID(AttributesID) {}
 			bool operator == (const GLBufferIDs& glBufferIDs)
 			{
 				if (uniqueID == glBufferIDs.uniqueID)
@@ -68,16 +34,13 @@ namespace robolab {
 			const std::size_t& getID() {
 				return uniqueID;
 			}
-			const std::string& getName() {
-				return meshName;
-			}
 
 		};
 
 		struct GLShaderIDs {
-			uint shaderID;
+			unsigned int shaderID;
 			std::unordered_map<std::string, unsigned int> locationIDs;
-			GLShaderIDs(uint ShaderID, std::unordered_map<std::string, unsigned int>& LocationIDs) 
+			GLShaderIDs(unsigned int ShaderID, std::unordered_map<std::string, unsigned int>& LocationIDs)
 				: shaderID(ShaderID), locationIDs(LocationIDs) {}
 		};
 

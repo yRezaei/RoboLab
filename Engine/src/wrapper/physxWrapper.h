@@ -15,6 +15,7 @@
 #include "../system/logging.h"
 #include "../graphics/mesh3D.h"
 #include "../entity/entity.h"
+#include "../graphics/mesh.h"
 
 
 namespace robolab {
@@ -82,37 +83,16 @@ namespace robolab {
 				return boxShape;
 			}
 
-			inline physx::PxTriangleMeshDesc* createTriangulatedMeshDescriptor(std::shared_ptr<graphics::MeshDataBuffers> buffer) {
-				physx::PxTriangleMeshDesc* meshDesc = new physx::PxTriangleMeshDesc();
-				meshDesc->points.data = buffer->vertices.data();
-				meshDesc->points.count = (physx::PxU32)buffer->vertices.size();
-				meshDesc->points.stride = sizeof(buffer->vertices[0]);
-				meshDesc->triangles.data = buffer->indices.data();
-				meshDesc->triangles.count = (physx::PxU32)buffer->indices.size();
-				meshDesc->triangles.stride = sizeof(buffer->indices[0]);
-				return meshDesc;
-			}
-
-			inline physx::PxShape* createTriangulatedShape(physx::PxPhysics& physicsSDK, physx::PxCooking& cooking, physx::PxTriangleMeshDesc& tringleMeshDesc, physx::PxMaterial* physxMaterial) {
-				physx::PxShapeFlags shapeFlags = physx::PxShapeFlag::eSIMULATION_SHAPE;
-				physx::PxDefaultMemoryOutputStream output;
-				if (!cooking.cookTriangleMesh(tringleMeshDesc, output))
-					return NULL;
-				physx::PxDefaultMemoryInputData input(output.getData(), output.getSize());
-				physx::PxTriangleMesh* triangulatedMesh = physicsSDK.createTriangleMesh(input);
-				physx::PxShape* triangulatedShape = physicsSDK.createShape(physx::PxTriangleMeshGeometry(triangulatedMesh), *physxMaterial, shapeFlags);
-				return triangulatedShape;
-			}
-
-			inline physx::PxShape* createConvexShape(std::shared_ptr<graphics::MeshDataBuffers> buffer, physx::PxFoundation& foundation, 
+			inline physx::PxShape* createConvexShape(std::shared_ptr<graphics::Mesh> buffer, physx::PxFoundation& foundation, 
 				physx::PxPhysics& physicsSDK, float skinWidth, physx::PxTolerancesScale& worldScale, PhysicalProperty& physxProperty) 
 			{
 				physx::PxCookingParams CookingParams(worldScale);
 				CookingParams.skinWidth = skinWidth;
 				physx::PxCooking* cooking = PxCreateCooking(PX_PHYSICS_VERSION, foundation, CookingParams);
 				physx::PxConvexMeshDesc meshDesc;
-				meshDesc.points.data = buffer->rowVertices.data();
-				meshDesc.points.count = (physx::PxU32)buffer->rowVertices.size();
+				auto rowVertices = buffer->getRowVertices();
+				meshDesc.points.data = rowVertices.data();
+				meshDesc.points.count = (physx::PxU32)rowVertices.size();
 				meshDesc.points.stride = sizeof(Vec3f);
 				meshDesc.flags = physx::PxConvexFlag::eCOMPUTE_CONVEX | physx::PxConvexFlag::eINFLATE_CONVEX;
 

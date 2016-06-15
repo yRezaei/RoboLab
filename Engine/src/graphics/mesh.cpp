@@ -5,15 +5,24 @@ namespace robolab {
 	namespace graphics {
 
 		Mesh::Mesh() {
-
+			static std::size_t uniqueMeshID{ 0ull };
+			id = uniqueMeshID++;
 		}
 
 		Mesh::~Mesh() {
 
 		}
 
+		std::size_t Mesh::getID() {
+			return id;
+		}
+
+		const Vertices& Mesh::getRowVertices() {
+			return rowVertices;
+		}
+
 		void Mesh::addVertex(Vec3f& vertex) {
-			vertices.push_back(vertex);
+			rowVertices.push_back(vertex);
 			Vec3f max = bounds.getMax();
 			Vec3f min = bounds.getMin();
 			if (max.x < vertex.x)
@@ -33,33 +42,31 @@ namespace robolab {
 			bounds = Bounds(min, max);
 		}
 
-		void Mesh::addTriangles(std::array<unsigned int, 3>& indices, Vec3f& color) {
-			Vec3f norm = normalize(
-				cross(vertices[indices[1]] - vertices[indices[0]],
-					vertices[indices[2]] - vertices[indices[0]]));
-			triangles.push_back(Triangle(indices, norm, color));
+		void Mesh::addTriangles(unsigned int id_1, unsigned int id_2, unsigned int id_3, Vec3f& color) {
+			Vec3f norm = normalize( cross(rowVertices[id_2] - rowVertices[id_1], rowVertices[id_3] - rowVertices[id_1]));
+			triangles.push_back(Triangle(Vec3ui(id_1, id_2, id_3), norm, color));
 		}
 
 		bool Mesh::isValid() {
 			bool result = false;
-			if(vertices.size() >= 3 && triangles.size() >= 1 && vertices[0] != vertices[1] && 
-				vertices[0] != vertices[2] && vertices[1] != vertices[2])
+			if(rowVertices.size() >= 3 && triangles.size() >= 1 && rowVertices[0] != rowVertices[1] &&
+				rowVertices[0] != rowVertices[2] && rowVertices[1] != rowVertices[2])
 				result = true;
 			return result;
 		}
 
-		/*Vertices Mesh::getVertices() {
+		Vertices Mesh::getVertices() {
 			Vertices vertices(triangles.size() * 3);
 			std::size_t index = 0;
 			for (auto tri : triangles) {
-				for (auto idx : tri.indices) {
-					vertices[index++] = rowVertices[idx];
-				}
+				vertices[index++] = rowVertices[tri.indices[0]];
+				vertices[index++] = rowVertices[tri.indices[1]];
+				vertices[index++] = rowVertices[tri.indices[2]];
 			}
 			return vertices;
 		}
 
-		Normals Mesh::getNomals() {
+		Normals Mesh::getNormals() {
 			Normals normals(triangles.size() * 3);
 			std::size_t index = 0;
 			for (auto tri : triangles) {
@@ -83,11 +90,11 @@ namespace robolab {
 
 		Indices Mesh::getIndices() {
 			Indices indices(triangles.size() * 3);
-			std::size_t index = 0;
+			unsigned int index = 0;
 			for (auto i = 0; i < triangles.size() * 3; i++)
 				indices[index] = index++;
 			return indices;
-		}*/
+		}
 
 		const Bounds& Mesh::getBounds() {
 			return bounds;

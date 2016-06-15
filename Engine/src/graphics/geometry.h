@@ -3,6 +3,7 @@
 
 #include "../mathematic/math3D.h"
 #include "../graphics/mesh3D.h"
+#include "../graphics/mesh.h"
 #include <memory>
 
 namespace robolab {
@@ -11,7 +12,7 @@ namespace robolab {
 	namespace graphics {
 		namespace geometry {
 
-			void createCube(std::shared_ptr<MeshDataBuffers> meshBuffer, float lenght, float width, float height, Vec3f& pivot);
+			std::shared_ptr<Mesh> createCube( float lenght, float width, float height, Vec3f& pivot);
 
 		}
 	}

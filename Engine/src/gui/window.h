@@ -13,8 +13,8 @@ namespace robolab {
 		class Window
 		{
 		protected:
-			SDL_Window *window; /* Our window handle */
-			SDL_GLContext glContext; /* Our opengl context handle */
+			SDL_Window *window;
+			SDL_GLContext glContext;
 		private:
 			std::string title;
 			Vec2i size;

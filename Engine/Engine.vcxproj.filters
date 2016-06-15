@@ -60,9 +60,6 @@
     <ClInclude Include="src\managers\renderMgr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\managers\resourceMgr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\mathematic\math3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -99,63 +96,6 @@
     <ClInclude Include="src\engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test\bp_main_simpleTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\bp_validSurfacePointInstance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\bp_main_validSurfacePoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\bp_main_simpleRandom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\bp_simpleRandomInstance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\bp_symbolicNumericConversion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\Connectedness.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\GeometricalState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\Global.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\StateDescriptionReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\SymbolState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\tinyxml2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\Math3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\spatialRelations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\SpatialProposition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\Scenario.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\symbolicNumeric\iPredicate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entity\component\meshComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -169,6 +109,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\bp_main_simpleRandom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\bp_main_simpleTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\bp_simpleRandomInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entity\component\meshComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\bp_main_robocup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -209,9 +167,6 @@
     <ClCompile Include="src\managers\renderMgr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\managers\resourceMgr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\system\input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -236,27 +191,6 @@
     <ClCompile Include="src\wrapper\customEventCallback.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\Connectedness.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\GeometricalState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\StateDescriptionReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\SymbolState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\tinyxml2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\symbolicNumeric\scenario.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entity\component\meshComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -266,15 +200,14 @@
     <ClCompile Include="src\utils\utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\entity\component\meshComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="PhysX3_x64.dll" />
-    <None Include="PhysX3Common_x64.dll" />
-    <None Include="PhysX3Cooking_x64.dll" />
-    <None Include="SDL2.dll" />
-    <None Include="glew32.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="table_round.txt" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 #include "physicsMgr.h"
 
-#include "../managers/resourceMgr.h"
+#include "../managers/resource.h"
 #include "../entity/component/transformComponent.h"
 #include "../system/logging.h"
+#include "../graphics/mesh.h"
 
 namespace robolab {
 	using namespace wrapper;
@@ -93,9 +94,9 @@ namespace robolab {
 			std::vector<physx::PxShape*> shapeList;
 			if (physicShapes.find(meshName) == physicShapes.end())
 			{
-				if (ResourceMgr::existPhysicMesh(meshName)) {
-					std::vector<std::shared_ptr<MeshDataBuffers>> meshDataList = ResourceMgr::getPhysicMesh(meshName);
-					for (auto mesh : meshDataList) {
+				auto& meshList = Resource::getPhysicalMesh(meshName);
+				if (meshList.first) {
+					for (auto mesh : meshList.second) {
 						shapeList.push_back(nvidiaPhysx::createConvexShape(mesh, *foundation, *physicsSDK, 0.0001f, *worldScale, physicalProperty));
 					}
 				}

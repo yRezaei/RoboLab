@@ -18,7 +18,7 @@ namespace robolab {
 		private:
 			Vec3f min, max;
 		public:
-			enum class Plane { XY, YZ, XZ };
+			enum class Axis { XY, YZ, XZ, XYZ };
 		public:
 			bool isValid;
 			Bounds() {
@@ -83,24 +83,11 @@ namespace robolab {
 					return Vec3f(0.0f);
 			}
 
-			float radius() const {
+			float radius(Axis axis) const {
 				if (isValid) {
-					auto radius = max.x;
-					if (radius < max.y)
-						radius = max.y;
-					if (radius < max.z)
-						radius = max.z;
-					return radius;
-				}
-				else
-					return 0;
-			}
-
-			float radius(Plane plane) const {
-				if (isValid) {
-					switch (plane)
+					switch (axis)
 					{
-					case Bounds::Plane::XY:
+					case Bounds::Axis::XY:
 					{
 						auto radius = max.x;
 						if (radius < max.y)
@@ -108,7 +95,7 @@ namespace robolab {
 						return radius;
 					}
 					break;
-					case Bounds::Plane::YZ:
+					case Bounds::Axis::YZ:
 					{
 						auto radius = max.y;
 						if (radius < max.z)
@@ -116,9 +103,19 @@ namespace robolab {
 						return radius;
 					}
 					break;
-					case Bounds::Plane::XZ:
+					case Bounds::Axis::XZ:
 					{
 						auto radius = max.x;
+						if (radius < max.z)
+							radius = max.z;
+						return radius;
+					}
+					break;
+					case Bounds::Axis::XYZ:
+					{
+						auto radius = max.x;
+						if (radius < max.y)
+							radius = max.y;
 						if (radius < max.z)
 							radius = max.z;
 						return radius;
@@ -149,19 +146,6 @@ namespace robolab {
 				}
 				else
 					return std::vector<Vec3f>();
-			}
-
-			float radius() const {
-				if (isValid) {
-					auto radius = max.x;
-					if (radius < max.y)
-						radius = max.y;
-					if (radius < max.z)
-						radius = max.z;
-					return radius;
-				}
-				else
-					return 0;
 			}
 
 			Bounds getAABB(Quat& quat) {
@@ -205,7 +189,7 @@ namespace robolab {
 				out << "Min:	 [" << min.x << " , " << min.y << " , " << min.z << "]" << std::endl;
 				out << "Size:	 [" << s.x << " , " << s.y << " , " << s.z << "]" << std::endl;
 				out << "Extents: [" << e.x << " , " << e.y << " , " << e.z << "]" << std::endl;
-				out << "Radius:   " << bounds.radius();
+				out << "Radius:   " << bounds.radius(Bounds::Axis::XYZ);
 				return out;
 			}
 		};// end of struct Bounds

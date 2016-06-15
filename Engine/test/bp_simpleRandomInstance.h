@@ -11,7 +11,7 @@ public:
 	std::shared_ptr<RigidObject> dropObject;
 	std::shared_ptr<RigidObject> surfaceObject;
 
-	Bounds* surfaceObjectBounds;
+	Bounds surfaceObjectBounds;
 	bool collision;
 	utils::UniformRandomFloat randUX;
 	utils::UniformRandomFloat randUY;
@@ -24,14 +24,13 @@ public:
 public:
 	BP_SimpleRandomInstance(Vec3f& root, const std::string& dropObjectName, const std::string& surfaceObjectName) {
 		rootPos = root;
-		if (ResourceMgr::existRenderMesh(dropObjectName)) {
-			dropObject = std::make_shared<RigidObject>("bottle_water_glass2", makeMat4(rootPos), dropObjectName, true);
-		}
 
-		if (ResourceMgr::existRenderMesh(surfaceObjectName)) {
-			surfaceObject = std::make_shared<RigidObject>("Surface", makeMat4(rootPos), surfaceObjectName, false);
-			surfaceObjectBounds = &ResourceMgr::getRenderMesh(surfaceObjectName)->bounds;
-		}
+		dropObject = std::make_shared<RigidObject>("bottle_water_glass2", makeMat4(rootPos), dropObjectName, true);
+
+
+		surfaceObject = std::make_shared<RigidObject>("Surface", makeMat4(rootPos), surfaceObjectName, false);
+		surfaceObjectBounds = Resource::getVisualMesh(surfaceObjectName).second->getBounds();
+
 		collision = false;
 	}
 
@@ -39,9 +38,9 @@ public:
 	}
 
 	void init() override {
-		dropHeight = surfaceObjectBounds->getMax().z + (surfaceObjectBounds->getMax().z / 3.0f);
-		randUX.setRange(surfaceObjectBounds->getMin().x, surfaceObjectBounds->getMax().x);
-		randUY.setRange(surfaceObjectBounds->getMin().y, surfaceObjectBounds->getMax().y);
+		dropHeight = surfaceObjectBounds.getMax().z + (surfaceObjectBounds.getMax().z / 3.0f);
+		randUX.setRange(surfaceObjectBounds.getMin().x, surfaceObjectBounds.getMax().x);
+		randUY.setRange(surfaceObjectBounds.getMin().y, surfaceObjectBounds.getMax().y);
 
 		randURoll.setRange(Deg2Rad(-50), Deg2Rad(50));
 		randUPitch.setRange(Deg2Rad(-50), Deg2Rad(50));
@@ -72,16 +71,6 @@ public:
 	}
 
 	void destroy() override {
-		Logging::console(system::LOG_INFORMATION, "Cleaning up Renderable objects.");
-		manager::RenderMgr::shutdown();
-
-		Logging::console(system::LOG_INFORMATION, "Cleaning up NVIDIA Physx objects.");
-		PhysicsMgr::shutdown();
-
-		Logging::console(system::LOG_INFORMATION, "Cleaning up Loaded resources.");
-		manager::ResourceMgr::shutdown();
-
-		Logging::console(system::LOG_NOTICE, "Bye bye.");
 	}
 };
 

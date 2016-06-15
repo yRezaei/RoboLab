@@ -127,11 +127,6 @@
     <ClInclude Include="src\graphics\mesh.h" />
     <ClInclude Include="src\graphics\shape.h" />
     <ClInclude Include="src\utils\utility.h" />
-    <ClInclude Include="test\bp_main_simpleRandom.h" />
-    <ClInclude Include="test\bp_simpleRandomInstance.h" />
-    <ClInclude Include="test\bp_symbolicNumericConversion.h" />
-    <ClInclude Include="test\bp_validSurfacePointInstance.h" />
-    <ClInclude Include="test\bp_main_simpleTest.h" />
     <ClInclude Include="src\blueprint\IBlueprint.h" />
     <ClInclude Include="src\commen\dataTypes.h" />
     <ClInclude Include="src\engine.h" />
@@ -149,7 +144,7 @@
     <ClInclude Include="src\gui\window.h" />
     <ClInclude Include="src\managers\physicsMgr.h" />
     <ClInclude Include="src\managers\renderMgr.h" />
-    <ClInclude Include="src\managers\resourceMgr.h" />
+    <ClInclude Include="src\managers\resource.h" />
     <ClInclude Include="src\mathematic\math3D.h" />
     <ClInclude Include="src\system\input.h" />
     <ClInclude Include="src\system\logging.h" />
@@ -161,24 +156,15 @@
     <ClInclude Include="src\wrapper\customEventCallback.h" />
     <ClInclude Include="src\wrapper\openGLWrapper.h" />
     <ClInclude Include="src\wrapper\physxWrapper.h" />
-    <ClInclude Include="test\bp_main_validSurfacePoint.h" />
-    <ClInclude Include="test\symbolicNumeric\Connectedness.h" />
-    <ClInclude Include="test\symbolicNumeric\GeometricalState.h" />
-    <ClInclude Include="test\symbolicNumeric\Global.h" />
-    <ClInclude Include="test\symbolicNumeric\iPredicate.h" />
-    <ClInclude Include="test\symbolicNumeric\Math3D.h" />
-    <ClInclude Include="test\symbolicNumeric\Scenario.h" />
-    <ClInclude Include="test\symbolicNumeric\SpatialProposition.h" />
-    <ClInclude Include="test\symbolicNumeric\spatialRelations.h" />
-    <ClInclude Include="test\symbolicNumeric\StateDescriptionReader.h" />
-    <ClInclude Include="test\symbolicNumeric\SymbolState.h" />
-    <ClInclude Include="test\symbolicNumeric\tinyxml2.h" />
-    <ClInclude Include="test\symbolicNumeric\Utils.h" />
+    <ClInclude Include="test\bp_main_robocup.h" />
+    <ClInclude Include="test\bp_main_simpleRandom.h" />
+    <ClInclude Include="test\bp_main_simpleTest.h" />
+    <ClInclude Include="test\bp_simpleRandomInstance.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\entity\component\meshComponent.cpp" />
+    <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\entity\component\physicComponent.cpp" />
     <ClCompile Include="src\entity\component\renderableComponent.cpp" />
     <ClCompile Include="src\entity\component\transformComponent.cpp" />
@@ -191,7 +177,7 @@
     <ClCompile Include="src\gui\window.cpp" />
     <ClCompile Include="src\managers\physicsMgr.cpp" />
     <ClCompile Include="src\managers\renderMgr.cpp" />
-    <ClCompile Include="src\managers\resourceMgr.cpp" />
+    <ClCompile Include="src\managers\resource.cpp" />
     <ClCompile Include="src\system\input.cpp" />
     <ClCompile Include="src\system\logging.cpp" />
     <ClCompile Include="src\utils\fileIO.cpp" />
@@ -201,22 +187,9 @@
     <ClCompile Include="src\wrapper\customAllocatorCallback.cpp" />
     <ClCompile Include="src\wrapper\customErrorCallback.cpp" />
     <ClCompile Include="src\wrapper\customEventCallback.cpp" />
-    <ClCompile Include="test\symbolicNumeric\Connectedness.cpp" />
-    <ClCompile Include="test\symbolicNumeric\GeometricalState.cpp" />
-    <ClCompile Include="test\symbolicNumeric\scenario.cpp" />
-    <ClCompile Include="test\symbolicNumeric\StateDescriptionReader.cpp" />
-    <ClCompile Include="test\symbolicNumeric\SymbolState.cpp" />
-    <ClCompile Include="test\symbolicNumeric\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="glew32.dll" />
-    <None Include="PhysX3Common_x64.dll" />
-    <None Include="PhysX3Cooking_x64.dll" />
-    <None Include="PhysX3_x64.dll" />
-    <None Include="SDL2.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="table_round.txt" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

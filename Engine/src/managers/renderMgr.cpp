@@ -1,6 +1,6 @@
 #include "renderMgr.h"
 
-#include "resourceMgr.h"
+#include "resource.h"
 #include "../wrapper/openGLWrapper.h"
 #include "../graphics/shader.h"
 #include "../system/logging.h"
@@ -44,10 +44,10 @@ namespace robolab {
 			window.setBackgroundColor(0.6f, 0.6f, 0.6f, 1.0f);
 			window.update();
 
-			camera =  std::make_shared<graphics::Camera>(70.0F, 0.75f, 1.0f, 1000000.0f, CAMERA_PERSPECTIVE);
+			camera = std::make_shared<graphics::Camera>(70.0F, 0.75f, 1.0f, 1000000.0f, CAMERA_PERSPECTIVE);
 			camera->setAspectRatio(windowSize);
+			camera->zoom(10.0f);
 			camera->rotateAroundTarget(35.0f, 135.0f);
-
 
 			meshGLBufferIdList["EMPTY_MESH"] = std::shared_ptr<GLBufferIDs>();
 			if (defaultNormalShader == 0) {
@@ -64,9 +64,10 @@ namespace robolab {
 		std::pair<std::shared_ptr<GLBufferIDs>, std::shared_ptr<GLShaderIDs>> RenderMgr::makeDrawable(const std::string& meshName) {
 			if (meshGLBufferIdList.find(meshName) == meshGLBufferIdList.end())
 			{
-				if (ResourceMgr::existRenderMesh(meshName)) {
+				auto mesh = Resource::getVisualMesh(meshName);
+				if (mesh.first) {
 					//std::shared_ptr<GLBufferIDs> bufferIDs = createGLBuffersID(bufferData);
-					std::shared_ptr<GLBufferIDs> bufferIDs = createGLInstanceBuffersID(ResourceMgr::getRenderMesh(meshName));
+					std::shared_ptr<GLBufferIDs> bufferIDs = createGLInstanceBuffersID(mesh.second);
 					meshGLBufferIdList[meshName] = bufferIDs;
 					return std::make_pair(bufferIDs, defaultInstanceShader);
 				}
@@ -118,62 +119,69 @@ namespace robolab {
 		}
 
 
-		std::shared_ptr<GLBufferIDs> RenderMgr::createGLBuffersID(const std::shared_ptr<MeshDataBuffers> meshData) {
+		std::shared_ptr<GLBufferIDs> RenderMgr::createGLBuffersID(const std::shared_ptr<Mesh> mesh) {
+			auto& vertices = mesh->getVertices();
+			auto& normals = mesh->getNormals();
+			auto& colors = mesh->getColors();
+			auto& indices = mesh->getIndices();
 			auto VAO = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_VERTEX_ARRAY);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_VERTEX_ARRAY, VAO);
 			checkGLError(LOCATION);
 			std::unordered_map<std::string, unsigned int> attributsIDs;
 			attributsIDs["vertices"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["vertices"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->vertices.data(), meshData->vertices.size() * sizeof(meshData->vertices[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, vertices.data(), vertices.size() * sizeof(vertices[0]));
 			wrapper::opengl::setAttributeShaderLocation(0, 3);
 			checkGLError(LOCATION);
 			attributsIDs["normals"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["normals"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->normals.data(), meshData->normals.size() * sizeof(meshData->normals[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, normals.data(), normals.size() * sizeof(normals[0]));
 			wrapper::opengl::setAttributeShaderLocation(1, 3);
 			checkGLError(LOCATION);
 			attributsIDs["colors"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["colors"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->colors.data(), meshData->colors.size() * sizeof(meshData->colors[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, colors.data(), colors.size() * sizeof(colors[0]));
 			wrapper::opengl::setAttributeShaderLocation(2, 3);
 			checkGLError(LOCATION);
 			auto indexID = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_INDEX);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_INDEX, indexID);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_INDEX, meshData->indices.data(), meshData->indices.size() * sizeof(meshData->indices[0]));
-			auto indexSize = meshData->indices.size();
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_INDEX, indices.data(), indices.size() * sizeof(indices[0]));
+			auto indexSize = indices.size();
 			checkGLError(LOCATION);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_VERTEX_ARRAY, 0);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, 0);
 
-			return std::make_shared<GLBufferIDs>(internal::getUniqueRenderableGroupID(), meshData->getName(), VAO, indexID, indexSize, attributsIDs);
+			return std::make_shared<GLBufferIDs>(mesh->getID(), VAO, indexID, indexSize, attributsIDs);
 		}
 
-		std::shared_ptr<GLBufferIDs> RenderMgr::createGLInstanceBuffersID(const std::shared_ptr<MeshDataBuffers> meshData) {
-				
+		std::shared_ptr<GLBufferIDs> RenderMgr::createGLInstanceBuffersID(const std::shared_ptr<Mesh> mesh) {
+			auto& vertices = mesh->getVertices();
+			auto& normals = mesh->getNormals();
+			auto& colors = mesh->getColors();
+			auto& indices = mesh->getIndices();
 			auto VAO = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_VERTEX_ARRAY);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_VERTEX_ARRAY, VAO);
 			checkGLError(LOCATION);
 			std::unordered_map<std::string, unsigned int> attributsIDs;
 			attributsIDs["vertices"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["vertices"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->vertices.data(), meshData->vertices.size() * sizeof(meshData->vertices[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, vertices.data(), vertices.size() * sizeof(vertices[0]));
 			wrapper::opengl::setAttributeShaderLocation(0, 3);
 			checkGLError(LOCATION);
 			attributsIDs["normals"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["normals"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->normals.data(), meshData->normals.size() * sizeof(meshData->normals[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, normals.data(), normals.size() * sizeof(normals[0]));
 			wrapper::opengl::setAttributeShaderLocation(1, 3);
 			checkGLError(LOCATION);
 			attributsIDs["colors"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, attributsIDs["colors"]);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, meshData->colors.data(), meshData->colors.size() * sizeof(meshData->colors[0]));
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_ATTRIBUTE, colors.data(), colors.size() * sizeof(colors[0]));
 			wrapper::opengl::setAttributeShaderLocation(2, 3);
 			checkGLError(LOCATION);
 			auto indexID = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_INDEX);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_INDEX, indexID);
-			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_INDEX, meshData->indices.data(), meshData->indices.size() * sizeof(meshData->indices[0]));
-			auto indexSize = meshData->indices.size();
+			wrapper::opengl::addDataToBuffer(wrapper::opengl::BUFFER_INDEX, indices.data(), indices.size() * sizeof(indices[0]));
+			auto indexSize = indices.size();
 			checkGLError(LOCATION);
 			attributsIDs["modelInstanceTransform"] = wrapper::opengl::genBufferID(wrapper::opengl::BUFFER_ATTRIBUTE);
 			checkGLError(LOCATION);
@@ -186,7 +194,7 @@ namespace robolab {
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_VERTEX_ARRAY, 0);
 			wrapper::opengl::setActive(wrapper::opengl::BUFFER_ATTRIBUTE, 0);
 
-			return std::make_shared<GLBufferIDs>(internal::getUniqueRenderableGroupID(), meshData->getName(), VAO, indexID, indexSize, attributsIDs);
+			return std::make_shared<GLBufferIDs>(mesh->getID(), VAO, indexID, indexSize, attributsIDs);
 		}
 
 
@@ -299,7 +307,7 @@ namespace robolab {
 
 			window.setTitle(window.getTitle()
 				+ " - FPS: " + std::to_string(utils::Timer::getFPS()) + "(f/s)"
-				+ " - Delta time: " + std::to_string(utils::Timer::getDeltaTime()) + "(s)");
+				+ " - Delta time: " + std::to_string(utils::Timer::getDeltaTime(utils::Timer::SECOND)) + "(s)");
 		}
 
 		void RenderMgr::shutdown() {

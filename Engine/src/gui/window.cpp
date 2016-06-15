@@ -221,8 +221,12 @@ namespace robolab {
 			}
 
 			const Uint8 *state = SDL_GetKeyboardState(NULL);
-			for (auto i = 0; i < 283; i++)
-				inputEvent.keyState[i] = state[i];
+			for (auto i = 0; i < 283; i++) {
+				if(state[i] == 0)
+					inputEvent.keyState[i] = false;
+				else
+					inputEvent.keyState[i] = true;
+			}
 			system::Input::updateInputState(inputEvent);
 			inputEvent.reset();
 		}

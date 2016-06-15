@@ -26,8 +26,26 @@ namespace robolab {
 			return (maxDeltaCount * 1000000000.0) / movingDeltaTimeSum;
 		}
 
-		double Timer::getDeltaTime() {
-			return deltaTime / 1000000000.0;
+		double Timer::getDeltaTime(TimeUnit unit) {
+			std::chrono::nanoseconds nanosecond(deltaTime);
+			switch (unit)
+			{
+			case robolab::utils::Timer::NANOSECOND:
+				return deltaTime;
+				break;
+			case robolab::utils::Timer::MICROSECOND:
+				return deltaTime / 1000.0;
+				break;
+			case robolab::utils::Timer::MILISECOND:
+				return deltaTime / 1000000.0;
+				break;
+			case robolab::utils::Timer::SECOND:
+				return deltaTime / 1000000000.0;
+				break;
+			default:
+				return deltaTime / 1000000000.0;
+				break;
+			}
 		}
 
 		double Timer::getTotalTime() {

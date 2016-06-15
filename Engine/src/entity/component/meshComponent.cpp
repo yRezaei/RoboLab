@@ -1,24 +1,26 @@
 #include "meshComponent.h"
-#include "../entity.h"
-#include "../../managers/resourceMgr.h"
+
 
 namespace robolab {
 	namespace entity {
 		namespace component {
-
-			MeshComponent::MeshComponent(const std::string& meshName) {
-				if (manager::ResourceMgr::isMeshLoaded(meshName))
-				{
-
-				}
+			MeshComponent::MeshComponent(VisualizationMesh visualizationMesh, PhysicMesh physicMesh)
+			{
+				this->visualMesh = visualizationMesh;
+				this->physicMesh = physicMesh;
 			}
 
-			MeshComponent::~MeshComponent() {
 
+			MeshComponent::~MeshComponent()
+			{
 			}
 
-			void MeshComponent::init() {
+			const VisualizationMesh MeshComponent::getVisualizationMesh() {
+				return visualMesh;
+			}
 
+			const PhysicMesh MeshComponent::getPhysicMesh() {
+				return physicMesh;
 			}
 
 		}

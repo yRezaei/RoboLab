@@ -11,6 +11,13 @@ namespace robolab {
 
 		class Timer
 		{
+		public:
+			enum TimeUnit {
+				NANOSECOND,
+				MICROSECOND,
+				MILISECOND,
+				SECOND
+			};
 		private:
 			static constexpr unsigned short maxDeltaCount = 3;
 			static Clock::time_point previousTime;
@@ -23,7 +30,7 @@ namespace robolab {
 		public:
 			static void update();
 			static double getFPS();
-			static double getDeltaTime();
+			static double getDeltaTime(TimeUnit unit);
 			static double getTotalTime();
 		};
 

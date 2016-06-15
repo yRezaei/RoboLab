@@ -1,11 +1,11 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-
+#include <memory>
+#include "src\engine.h"
 #include "test/bp_main_simpleTest.h"
 #include "test/bp_main_simpleRandom.h"
-#include "test/bp_main_validSurfacePoint.h"
-#include "test/bp_symbolicNumericConversion.h"
+#include "test/bp_main_robocup.h"
 
 int main(int argc, char **argv)
 {
@@ -14,53 +14,35 @@ int main(int argc, char **argv)
 
 	/*##################################################################
 					Simple test
-	############################################*/
+	###################################################################*/
 
-	/*BP_Main_SimpleTest simpleTest;
-	simpleTest.init();
-	while (RenderMgr::isOK())
-	{
-		simpleTest.update(1 / 60.f);
-	}
-	simpleTest.destroy();*/
+	/*robolab::Engine::initialize(std::make_unique<BP_Main_SimpleTest>(), EngineMode::GUI);
+	while (true) {
+		if (robolab::Engine::update(1 / 60.0f) == robolab::EngineState::SHUTDOWN)
+			break;
+	}*/
 
 	/*##################################################################
 			Simple random drop
-	############################################*/
+	###################################################################*/
 
-	/*BP_Main_SimpleRandom simpleRandom(100);
-	simpleRandom.init();
-	while (RenderMgr::isOK())
-	{
-		simpleRandom.update(1 / 120.f);
+	/*robolab::Engine::initialize(std::make_unique<BP_Main_SimpleRandom>(100), EngineMode::GUI);
+	while (true) {
+		if (robolab::Engine::update(1 / 60.0f) == robolab::EngineState::SHUTDOWN)
+			break;
 	}
-	simpleRandom.destroy();*/
+	*/	
+	/*##################################################################
+							Robocup
+	###################################################################*/
 
-	/*#################################################################
-				Valid surface point test
-	############################################*/
-
-	/*BP_Main_validSurfacePoint validSurfacePoint(1000);
-	validSurfacePoint.init();
-	while (RenderMgr::isOK())
-	{
-		validSurfacePoint.update(1 / 200.f);
+	robolab::Engine::initialize(std::make_unique<BP_Main_Robocup>(), EngineMode::GUI);
+	while (true) {
+		if (robolab::Engine::update(1 / 60.0f) == robolab::EngineState::SHUTDOWN)
+			break;
 	}
-	validSurfacePoint.destroy();*/
-
-	/*#################################################################
-				Symbolic Numeric conversion
-	############################################*/
-
-	BP_SymbolicNumericConversion symbolicNumeric(1000);
-	symbolicNumeric.init();
-	while (RenderMgr::isOK())
-	{
-		symbolicNumeric.update(1 / 200.f);
-	}
-	symbolicNumeric.destroy();
 
 	
-	std::this_thread::sleep_for(1s);
+	//std::this_thread::sleep_for(0.5s);
 	return 0;
 }

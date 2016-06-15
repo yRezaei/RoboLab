@@ -1,0 +1,228 @@
+newmtl CabinetSG
+illum 4
+Kd 0.67 0.67 0.67
+Ka 0.05 0.05 0.05
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Cabinet_bigSG
+illum 4
+Kd 0.16 0.10 0.01
+Ka 0.13 0.13 0.13
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Cabinet_double_talll_1SG
+illum 4
+Kd 0.67 0.67 0.67
+Ka 0.08 0.08 0.08
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl ChairSG
+illum 4
+Kd 0.51 0.42 0.24
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl ChairSG1
+illum 4
+Kd 0.71 0.59 0.32
+Ka 0.12 0.12 0.12
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl KitchenSG
+illum 4
+Kd 0.69 0.69 0.69
+Ka 0.17 0.17 0.17
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl KitchenSG1
+illum 4
+Kd 0.24 0.11 0.01
+Ka 0.18 0.18 0.18
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl KitchenSG2
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.50 0.50 0.50
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl KitchenSG3
+illum 4
+Kd 0.51 0.51 0.51
+Ka 0.42 0.42 0.42
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl KitchenSG4
+illum 4
+Kd 0.81 0.81 0.81
+Ka 0.04 0.04 0.04
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl KitchenSG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.28 0.28 0.28
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Lab_floorSG
+illum 4
+Kd 0.06 0.18 0.02
+Ka 0.31 0.31 0.31
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl R_doorSG
+illum 4
+Kd 0.22 0.15 0.02
+Ka 0.14 0.14 0.14
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl ShelfSG
+illum 4
+Kd 0.10 0.10 0.10
+Ka 0.23 0.23 0.23
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl SideTableSG
+illum 4
+Kd 0.18 0.17 0.17
+Ka 0.11 0.11 0.11
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sofa_bigSG
+illum 4
+Kd 0.56 0.56 0.56
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl TableSG
+illum 4
+Kd 0.67 0.67 0.67
+Ka 0.05 0.05 0.05
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl TableSG1
+illum 4
+Kd 0.55 0.55 0.55
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl TableSG2
+illum 4
+Kd 0.06 0.06 0.06
+Ka 0.24 0.24 0.24
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Table_smallSG
+illum 4
+Kd 0.14 0.13 0.13
+Ka 0.23 0.23 0.23
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Table_woodenSG
+illum 4
+Kd 0.67 0.50 0.25
+Ka 0.05 0.05 0.05
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Table_woodenSG1
+illum 4
+Kd 0.65 0.52 0.24
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl chair_roleSG
+illum 4
+Kd 0.39 0.37 0.37
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl chair_roleSG1
+illum 4
+Kd 0.18 0.16 0.16
+Ka 0.16 0.16 0.16
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl chair_roleSG2
+illum 4
+Kd 0.67 0.67 0.67
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl kitchen_cabinet_down_4_door1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.02 0.02 0.02
+Tf 0.69 0.69 0.69
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lab_door_1SG
+illum 4
+Kd 0.62 0.37 0.02
+Ka 0.17 0.17 0.17
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl wall_windowSG
+illum 4
+Kd 0.47 0.17 0.03
+Ka 0.06 0.06 0.06
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00

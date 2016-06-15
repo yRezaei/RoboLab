@@ -22,20 +22,18 @@ public:
 	}
 
 	void init() override {
-		RenderMgr::initialize("Robo-Lab", Vec2i(800, 600), false);
-		PhysicsMgr::initialize(UNIT_METER);
 
-		ResourceMgr::loadMeshFile("../Resources/internal", "grid", ResourceMgr::MESH_RENDERING, Vec3f(0.1f));
+		Resource::loadMesh(Resource::MeshUsageType::VISUALIZATION, "../Resources/internal", "grid", Vec3f(0.1f));
 
-		ResourceMgr::loadMeshFile("../Resources/obj_objects/", "bottle_water_glass2", ResourceMgr::MESH_RENDERING | ResourceMgr::MESH_PHYSIC_SIMULATION, Vec3f(0.01f));
-		ResourceMgr::loadMeshFile("../Resources/obj_objects/", "table_curved", ResourceMgr::MESH_RENDERING | ResourceMgr::MESH_PHYSIC_SIMULATION, Vec3f(0.01f));
+		Resource::loadMesh(Resource::MeshUsageType::VISUALIZATION, "../Resources/obj_objects/", "bottle_water_glass2", Vec3f(0.01f));
+		Resource::loadMesh(Resource::MeshUsageType::VISUALIZATION, "../Resources/obj_objects/", "table_curved", Vec3f(0.01f));
+		Resource::loadMesh(Resource::MeshUsageType::PHYSIC_SIMULATION, "../Resources/obj_objects/", "bottle_water_glass2", Vec3f(0.01f));
+		Resource::loadMesh(Resource::MeshUsageType::PHYSIC_SIMULATION, "../Resources/obj_objects/", "table_curved", Vec3f(0.01f));
 
-		if (ResourceMgr::existRenderMesh("grid")) {
-			Grid.setName("Grid");
-			Grid.addComponent<RenderableComponent>("grid");
-		}
-		else
-			system::Logging::console(system::LOG_WARNING, "No mesh found loaded with name GRID.");
+
+		Grid.setName("Grid");
+		Grid.addComponent<RenderableComponent>("grid");
+
 
 		while ((instanceGap * instanceGap) < nrOfInstance)
 			instanceGap += 1;
@@ -61,11 +59,11 @@ public:
 
 	void update(float deltaTime) override
 	{
-		utils::Timer::update();
+		if (Input::KeyPressed(KEY_ESCAPE))
+			Engine::shutdown();
 
 		//##########################################
 		if (Input::KeyPressed(KEY_S)) {
-			Logging::console(system::LOG_INFORMATION, "KEY_S is pressed.");
 			if (conitueSimulation)
 				conitueSimulation = false;
 			else
@@ -74,43 +72,29 @@ public:
 
 		//##########################################
 		if (Input::KeyPressed(KEY_P)) {
-			if (enablePhysics)
-				enablePhysics = false;
+			if (Engine::getFlag(Engine::SIMULATE_PHYSIC))
+				Engine::setFlag(Engine::SIMULATE_PHYSIC, false);
 			else
-				enablePhysics = true;
+				Engine::setFlag(Engine::SIMULATE_PHYSIC, true);
 		}
 
 		//##########################################
 		if (Input::KeyPressed(KEY_D)) {
-			if (enableDrawing)
-				enableDrawing = false;
+			if (Engine::getFlag(Engine::VISUALIZE_WORLD))
+				Engine::setFlag(Engine::VISUALIZE_WORLD, false);
 			else
-				enableDrawing = true;
+				Engine::setFlag(Engine::VISUALIZE_WORLD, true);
 		}
 
-		if (conitueSimulation) {
-			for (auto instance : insanceList)
+		if(conitueSimulation)
+			for (auto& instance : insanceList)
 				instance->update(deltaTime);
-		}
+		
 
-		//##########################################
-		if(enablePhysics)
-			manager::PhysicsMgr::update(1 / 60.f);
-
-		manager::RenderMgr::update(enableDrawing);
 	}
 
 	void destroy() override {
-		Logging::console(system::LOG_INFORMATION, "Cleaning up Renderable objects.");
-		manager::RenderMgr::shutdown();
-
-		Logging::console(system::LOG_INFORMATION, "Cleaning up NVIDIA Physx objects.");
-		PhysicsMgr::shutdown();
-
-		Logging::console(system::LOG_INFORMATION, "Cleaning up Loaded resources.");
-		manager::ResourceMgr::shutdown();
-
-		Logging::console(system::LOG_NOTICE, "Bye bye.");
+		
 	}
 };
 

@@ -10,6 +10,7 @@
 #include "../entity/entity.h"
 #include "../mathematic/math3D.h"
 #include "../graphics/mesh3D.h"
+#include "../graphics/mesh.h"
 
 namespace robolab {
 	using namespace math3D;
@@ -21,15 +22,6 @@ namespace robolab {
 			VISIBILITY_TRUE,
 			VISIBILITY_FALSE
 		};
-
-		namespace internal
-		{
-			inline std::size_t getUniqueRenderableGroupID() noexcept
-			{
-				static std::size_t lastRenderableGroupID{ 0u };
-				return lastRenderableGroupID++;
-			}
-		}
 
 		class RenderMgr
 		{
@@ -80,8 +72,8 @@ namespace robolab {
 			static std::vector<DrawableInstace> instanceModelsTransform;
 			static Mat4 prevProjection, prevView;
 		private:
-			static std::shared_ptr<GLBufferIDs> createGLBuffersID(const std::shared_ptr<MeshDataBuffers> meshData);
-			static std::shared_ptr<GLBufferIDs> createGLInstanceBuffersID(const std::shared_ptr<MeshDataBuffers> meshData);
+			static std::shared_ptr<GLBufferIDs> createGLBuffersID(const std::shared_ptr<Mesh> meshData);
+			static std::shared_ptr<GLBufferIDs> createGLInstanceBuffersID(const std::shared_ptr<Mesh> meshData);
 			static std::shared_ptr<GLShaderIDs> createGLShader(const std::string& vertexShader, const std::string& fragmentShader, std::vector<std::string> shaderLocationsName);
 			static void checkGLError(const std::string& location);
 			static void drawInstance();
